@@ -1,9 +1,9 @@
 <template>
   <div>
-    <el-row>
+    <el-row type="flex" justify="space-between">
       <!-- 减速机链接 -->
-      <el-col :span="22">
-      <el-col :span="2">
+      <el-col :span="20" style="display: flex; gap: 30px;">
+      
         <el-link
           :underline="false"
           :style="{
@@ -13,10 +13,10 @@
           @click="switchType('减速机')">
           减速机
         </el-link>
-      </el-col>
+      
 
       <!-- 轴连器链接 -->
-      <el-col :span="2">
+      
         <el-link
           :underline="false"
           :style="{
@@ -25,11 +25,11 @@
           @click="switchType('轴连器')">
           轴连器
         </el-link>
-      </el-col>
+      
     </el-col>
-      <el-col :span="2" style="display: flex; justify-content: flex-end; gap: 10px;">
-        <el-button icon="el-icon-s-operation" size="mini" round :span="1"></el-button>
-        <el-button icon="el-icon-sort" size="mini" round :span="1" ></el-button>
+        <el-col :span="4" style="display: flex; justify-content: flex-end; gap: 10px;">
+        <el-button :icon="Filter" size="mini" circle />
+        <el-button :icon="Switch" size="mini" circle />
       </el-col>
     </el-row>
 
@@ -66,9 +66,12 @@
 </template>
 
 <script>
+import { Filter,Switch
+ } from '@element-plus/icons-vue'
 export default {
   data() {
     return {
+      Filter,Switch,
       // 改造数据：增加 type 字段区分类型
       cards: Array.from({ length: 45 }, (_, i) => ({
         id: i + 1,
