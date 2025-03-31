@@ -87,7 +87,7 @@
 
       <el-container>
         <!-- <el-header> -->
-          <el-header style="display: flex; align-items: center; justify-content: space-between; font-size: 15px; line-height: 60px;">
+          <el-header style="display: flex; align-items: center; justify-content: space-between; font-size: 15px; line-height: 60px;background-color: #F6F7F8;">
         <el-col :span="5" :offset="0" >
           <el-input
           :prefix-icon = "Search"
@@ -152,7 +152,7 @@
         </div>
       </el-header>
         <!-- </el-header> -->
-        <el-main><div class="main-container flex">
+        <el-main style="background-color: #F6F7F8;"><div class="main-container flex" >
           <router-view v-slot="{ Component }">
             <transition name="fade" mode="out-in">
               <component :is="Component" />
@@ -208,12 +208,12 @@
   }
 
   .el-header {
-    background-color: #F6F7F8;
+    background-color: #005be4;
 
   }
 
   .el-main {
-    background-color: #F6F7F8;
+    background-color: #044fc1;
 
   }
 
