@@ -207,16 +207,6 @@
     max-width: 100%; /* 确保图片宽度也不会超出 */
   }
 
-  .el-header {
-    background-color: #005be4;
-
-  }
-
-  .el-main {
-    background-color: #044fc1;
-
-  }
-
 /* 新增折叠控制器样式 */
 .collapse-trigger {
   position: absolute;
