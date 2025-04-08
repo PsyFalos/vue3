@@ -8,6 +8,7 @@
           :underline="false"
           :style="{
             color: selectedType === '减速机' ? '#008000' : '#606266',
+            fontWeight: selectedType === '减速机' ? 'bold' : 'normal' ,
             marginRight: '25px'
           }"
           @click="switchType('减速机')">
@@ -20,7 +21,8 @@
         <el-link
           :underline="false"
           :style="{
-            color: selectedType === '轴连器' ? '#008000' : '#606266'
+            color: selectedType === '轴连器' ? '#008000' : '#606266',
+            fontWeight: selectedType === '轴连器' ? 'bold' : 'normal'
           }"
           @click="switchType('轴连器')">
           轴连器
