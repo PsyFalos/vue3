@@ -1,7 +1,7 @@
 <template>
   <el-config-provider namespace="ep">
     <div class="common-layout">
-    <el-container>
+    <el-container style="height: 100vh;">
       
         <el-aside
       :width="isCollapse ? '65px' : '200px'"

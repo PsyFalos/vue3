@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%; height: 100vh;">
     <el-row type="flex" justify="space-between">
       <!-- 减速机链接 -->
       <el-col :span="20" style="display: flex; gap: 30px;">
@@ -7,7 +7,7 @@
         <el-link
           :underline="false"
           :style="{
-            color: selectedType === '减速机' ? '#409EFF' : '#606266',
+            color: selectedType === '减速机' ? '#008000' : '#606266',
             marginRight: '25px'
           }"
           @click="switchType('减速机')">
@@ -20,14 +20,14 @@
         <el-link
           :underline="false"
           :style="{
-            color: selectedType === '轴连器' ? '#409EFF' : '#606266'
+            color: selectedType === '轴连器' ? '#008000' : '#606266'
           }"
           @click="switchType('轴连器')">
           轴连器
         </el-link>
       
-    </el-col>
-        <el-col :span="4" style="display: flex; justify-content: flex-end; gap: 10px;">
+      </el-col>
+        <el-col :span="4" style="display: flex !important; justify-content: flex-end !important; gap: 10px;">
         <el-button :icon="Filter" size="mini" circle />
         <el-button :icon="Switch" size="mini" circle />
       </el-col>
@@ -176,7 +176,7 @@ export default {
 /* 调整 Card 比例，让它成为竖着的长方形 */
 .image {
   width: 100%;
-  aspect-ratio: 3/4; /* 让卡片变成长方形 */
+  aspect-ratio: 1/1; /* 让卡片变成长方形 */
   object-fit: cover;
   border-radius: 5px 5px 0 0; /* 圆角美观 */
 }
