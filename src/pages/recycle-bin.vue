@@ -1,36 +1,41 @@
 <template>
-  <div>
-    <el-row>
-      <!-- <el-col :span="2">
-        <el-link :underline="false" style="margin-right: 25px;">文件</el-link>
-      </el-col>
-      <el-col :span="2">
+  <div style="width: 100%; height: 100vh;">
+    <!-- <el-row type="flex" justify="space-between"> -->
+      <!-- 左侧内容 -->
+      <!-- <el-col :span="20" style="display: flex; gap: 30px;">
+        <el-link :underline="false">文件</el-link>
         <el-link :underline="false">模板</el-link>
       </el-col> -->
 
-    </el-row>
+      <!-- 右侧按钮 -->
+      <!-- <el-col :span="4" style="display: flex !important; justify-content: flex-end !important; gap: 10px;">
+        <el-button :icon="Filter" size="mini" circle />
+        <el-button :icon="Switch" size="mini" circle />
+      </el-col>
+    </el-row> -->
 
         <!-- <el-divider></el-divider> -->
   <!-- card 部分 -->
-  <el-row style="margin-top: 20px;" >
-          <el-col :span="4" v-for="(o, index) in 10" :key="o" :offset="index > 0 ? 1 : 0">
+        <el-row style="margin-top: 20px;" >
+          <el-col :span="4" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 1 : 0">
          <el-card :body-style="{ padding: '0px' }" shadow="hover">
           <a href="http://localhost:8081/" target="_blank">
             <img src="@/assets/chanpin.png" class="image" style="cursor: pointer;">
           </a>
           <div style="padding: 10px;">
-          <span>我的算式型号</span>
+          <span>放入回收站的算式型号</span>
           <div class="bottom clearfix">
             <time class="time">{{ currentDate }}</time></div>
-            <div class="dibu" style="margin-top: 10px; text-align: center;">
+            <!-- <div class="dibu" style="margin-top: 10px; text-align: center;">
+              
               <el-button-group style="margin: 0 auto; display: block;">
                 <el-button
                   type="primary"
-                  icon="el-icon-refresh-left"
+                  :icon="Share"
                   style="
                     width: 60px;
                     padding: 8px 0;
-                     /* <!-- 垂直方向留白 --> */
+
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
@@ -39,7 +44,7 @@
                 ></el-button>
                 <el-button
                   type="danger"
-                  icon="el-icon-delete"
+                  :icon="DeleteFilled"
                   style="
                     width: 60px;
                     padding: 8px 0;
@@ -48,10 +53,9 @@
                     justify-content: center;
                   "
                   plain
-                  @click="open3"
                 ></el-button>
               </el-button-group>
-            </div>
+            </div> -->
             </div>
            </el-card>
           </el-col>
@@ -59,11 +63,12 @@
   <!-- 页码 部分 -->
   <el-row>
     <el-col :span="12" :offset="6">
-      <el-pagination  layout="prev, pager, next"
+      <el-pagination
+      background
+      layout="prev, pager, next"
       :total="1000"
       style="margin: 20px 0px;"
-      prev-text="上一页"
-      next-text="下一页">
+      >
       </el-pagination>
     </el-col>
   </el-row>
@@ -72,28 +77,17 @@
 </template>
 
 <script>
+import { Filter,Switch,Share,DeleteFilled
+ } from '@element-plus/icons-vue'
 export default {
-  methods: {
-
-    open3() {
-        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          });
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          });
-        });
-      },
-
-    },
+  setup(){
+  return {
+    Filter,Switch,Share,DeleteFilled
+   }
+  },
+  components: {
+    Filter,Switch,Share,DeleteFilled
+  },
   name: 'App',
   data() {
       const item = {

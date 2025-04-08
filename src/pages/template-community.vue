@@ -45,7 +45,9 @@
         :span="4"
         class="card-col">
         <el-card :body-style="{ padding: '0px' }" shadow="hover">
+          <a href="http://localhost:8081/" target="_blank">
           <img src="@/assets/chanpin.png" class="image">
+          </a>
           <div class="card-content">
             <span>久达公司 {{ item.title }} 类模板</span>
           </div>

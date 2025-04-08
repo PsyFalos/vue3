@@ -1,183 +1,144 @@
 <template>
-  <div class="page-container">
-    <!-- 顶部导航栏 -->
-    <div class="static-header">
-      <div class="nav-content">
-        <div class="nav-links">
-          <el-link :underline="false" class="nav-item">文件</el-link>
-          <el-link :underline="false" class="nav-item">模板</el-link>
-        </div>
-        <div class="nav-actions">
-          <el-button-group>
-            <el-button icon="el-icon-s-operation" size="mini" circle></el-button>
-            <el-button icon="el-icon-sort" size="mini" circle></el-button>
-          </el-button-group>
-        </div>
-      </div>
-    </div>
+  <div style="width: 100%; height: 100vh;">
+    <el-row type="flex" justify="space-between">
+      <!-- 左侧内容 -->
+      <el-col :span="20" style="display: flex; gap: 30px;">
+        <el-link :underline="false">文件</el-link>
+        <el-link :underline="false">模板</el-link>
+      </el-col>
 
-    <!-- 卡片展示区 -->
-    <div class="card-wrapper">
-      <el-row :gutter="20">
-        <el-col 
-          v-for="(item, index) in 6"
-          :key="index"
-          :xs="24" 
-          :sm="12"
-          :md="8"
-          :lg="6"
-        >
-          <el-card 
-            class="adaptive-card"
-            shadow="hover"
-            :body-style="{ padding: '0', display: 'flex', flexDirection: 'column', height: '100%' }"
-          >
-            <a href="#">
-              <img 
-                src="@/assets/chanpin.png" 
-                class="card-image"
-              >
-            </a>
-            <div class="card-body">
-              <div class="card-title">我的算式型号</div>
-              <div class="card-meta">
-                <span class="card-date">{{ currentDate }}</span>
-                <div class="card-actions">
-                  <el-button type="primary" icon="el-icon-connection" circle size="mini"></el-button>
-                  <el-button type="danger" icon="el-icon-delete" circle size="mini"></el-button>
-                </div>
-              </div>
+      <!-- 右侧按钮 -->
+      <el-col :span="4" style="display: flex !important; justify-content: flex-end !important; gap: 10px;">
+        <el-button :icon="Filter" size="mini" circle />
+        <el-button :icon="Switch" size="mini" circle />
+      </el-col>
+    </el-row>
+
+        <!-- <el-divider></el-divider> -->
+  <!-- card 部分 -->
+        <el-row style="margin-top: 20px;" >
+          <el-col :span="4" v-for="(o, index) in 4" :key="o" :offset="index > 0 ? 1 : 0">
+         <el-card :body-style="{ padding: '0px' }" shadow="hover">
+          <a href="http://localhost:8081/" target="_blank">
+            <img src="@/assets/chanpin.png" class="image" style="cursor: pointer;">
+          </a>
+          <div style="padding: 10px;">
+          <span>我的算式型号</span>
+          <div class="bottom clearfix">
+            <time class="time">{{ currentDate }}</time></div>
+            <div class="dibu" style="margin-top: 10px; text-align: center;">
+              <el-button-group style="margin: 0 auto; display: block;">
+                <el-button
+                  type="primary"
+                  :icon="Share"
+                  style="
+                    width: 60px;
+                    padding: 8px 0;
+                     /* <!-- 垂直方向留白 --> */
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  plain
+                ></el-button>
+                <el-button
+                  type="danger"
+                  :icon="DeleteFilled"
+                  style="
+                    width: 60px;
+                    padding: 8px 0;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  plain
+                ></el-button>
+              </el-button-group>
             </div>
-          </el-card>
-        </el-col>
-      </el-row>
-    </div>
-
-    <!-- 分页器 -->
-    <div class="pagination-container">
+            </div>
+           </el-card>
+          </el-col>
+        </el-row>
+  <!-- 页码 部分 -->
+  <el-row>
+    <el-col :span="12" :offset="6">
       <el-pagination
-        layout="prev, pager, next"
-        :total="100"
-        prev-text="上一页"
-        next-text="下一页"
-      />
-    </div>
+      background
+      layout="prev, pager, next"
+      :total="1000"
+      style="margin: 20px 0px;"
+      >
+      </el-pagination>
+    </el-col>
+  </el-row>
+
   </div>
 </template>
 
 <script>
+import { Filter,Switch,Share,DeleteFilled
+ } from '@element-plus/icons-vue'
 export default {
+  setup(){
+  return {
+    Filter,Switch,Share,DeleteFilled
+   }
+  },
+  components: {
+    Filter,Switch,Share,DeleteFilled
+  },
+  name: 'App',
   data() {
-    return {
-      currentDate: new Date().toLocaleDateString('zh-CN', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-      })
+      const item = {
+
+      };
+      return {
+        tableData: Array(20).fill(item),
+        currentDate: new Date(),
+        input2: ''
+      }
     }
-  }
 }
 </script>
 
-<style lang="scss" scoped>
-/* 页面容器 */
-.page-container {
-  max-width: 100vh;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* 导航栏调整 */
-.static-header {
-  background: white;
-  padding: 16px 0;  // 增加高度
-  border-bottom: 1px solid #ebeef5;
-  margin-bottom: 24px;
-
-  .nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1440px;
-    margin: 0 auto;
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-
-      .nav-item {
-        font-size: 16px;
-        color: #606266;
-        transition: color 0.3s;
-
-        &:hover {
-          color: #409EFF;
-        }
-      }
-    }
-  }
-}
-
-/* 卡片布局优化 */
-.card-wrapper {
-  .adaptive-card {
-    margin-bottom: 24px;  // 增加卡片间距
-    transition: transform 0.2s;
-    
-    &:hover {
-      transform: translateY(-3px);
+<style>
+/* 卡片区域开始 */
+.time {
+      font-size: 13px;
+      color: #999;
     }
 
-    .card-image {
+    .bottom {
+      margin-top: 13px;
+      line-height: 12px;
+    }
+
+    .button {
+      padding: 0;
+      float: right;
+    }
+
+    .image {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 4px 4px 0 0;
+      display: block;
     }
 
-    .card-body {
-      padding: 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-
-      .card-title {
-        font-weight: 500;
-        margin-bottom: 8px;
-      }
-
-      .card-meta {
-        margin-top: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .card-date {
-          font-size: 12px;
-          color: #909399;
-        }
-
-        .card-actions {
-          display: flex;
-          gap: 8px;
-        }
-      }
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
     }
-  }
-}
 
-/* 响应式优化 */
-@media (min-width: 1200px) {
-  .adaptive-card {
-    max-width: 280px;  // 控制最大宽度
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
+    .clearfix:after {
+        clear: both
+    }
 
-.pagination-container {
-  margin: 32px 0;
-  display: flex;
-  justify-content: center;
-}
+    .dibu {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+  }
+
+
+  /* 卡片区域结束 */
 </style>
+

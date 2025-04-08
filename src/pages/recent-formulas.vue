@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%; height: 100vh;">
     <el-row type="flex" justify="space-between">
       <!-- 左侧内容 -->
       <el-col :span="20" style="display: flex; gap: 30px;">
@@ -8,7 +8,7 @@
       </el-col>
 
       <!-- 右侧按钮 -->
-      <el-col :span="4" style="display: flex; justify-content: flex-end; gap: 10px;">
+      <el-col :span="4" style="display: flex !important; justify-content: flex-end !important; gap: 10px;">
         <el-button :icon="Filter" size="mini" circle />
         <el-button :icon="Switch" size="mini" circle />
       </el-col>
@@ -17,7 +17,7 @@
         <!-- <el-divider></el-divider> -->
   <!-- card 部分 -->
         <el-row style="margin-top: 20px;" >
-          <el-col :span="4" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 1 : 0">
+          <el-col :span="4" v-for="(o, index) in 5" :key="o" :offset="index > 0 ? 1 : 0">
          <el-card :body-style="{ padding: '0px' }" shadow="hover">
           <a href="http://localhost:8081/" target="_blank">
             <img src="@/assets/chanpin.png" class="image" style="cursor: pointer;">
@@ -62,11 +62,12 @@
   <!-- 页码 部分 -->
   <el-row>
     <el-col :span="12" :offset="6">
-      <el-pagination  layout="prev, pager, next"
+      <el-pagination
+      background
+      layout="prev, pager, next"
       :total="1000"
       style="margin: 20px 0px;"
-      prev-text="上一页"
-      next-text="下一页">
+      >
       </el-pagination>
     </el-col>
   </el-row>

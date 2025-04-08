@@ -1,20 +1,16 @@
 <template>
-  <div>
-    <el-row>
-  <!-- 左侧内容 -->
-      <el-col :span="22"> <!-- 留出 2 分栏给右侧按钮 -->
-        <el-col :span="2">
-          <el-link :underline="false" style="margin-right: 25px;">文件</el-link>
-        </el-col>
-        <el-col :span="2">
-          <el-link :underline="false">模板</el-link>
-        </el-col>
+  <div style="width: 100%; height: 100vh;">
+    <el-row type="flex" justify="space-between">
+      <!-- 左侧内容 -->
+      <el-col :span="20" style="display: flex; gap: 30px;">
+        <el-link :underline="false">文件</el-link>
+        <el-link :underline="false">模板</el-link>
       </el-col>
 
       <!-- 右侧按钮 -->
-      <el-col :span="2" style="display: flex; justify-content: flex-end; gap: 10px;">
-        <el-button icon="el-icon-s-operation" size="mini" round :span="1"></el-button>
-        <el-button icon="el-icon-sort" size="mini" round :span="1" ></el-button>
+      <el-col :span="4" style="display: flex !important; justify-content: flex-end !important; gap: 10px;">
+        <el-button :icon="Filter" size="mini" circle />
+        <el-button :icon="Switch" size="mini" circle />
       </el-col>
     </el-row>
 
@@ -34,7 +30,7 @@
               <el-button-group style="margin: 0 auto; display: block;">
                 <el-button
                   type="primary"
-                  icon="el-icon-connection"
+                  :icon="Share"
                   style="
                     width: 60px;
                     padding: 8px 0;
@@ -47,7 +43,7 @@
                 ></el-button>
                 <el-button
                   type="danger"
-                  icon="el-icon-delete"
+                  :icon="DeleteFilled"
                   style="
                     width: 60px;
                     padding: 8px 0;
@@ -66,11 +62,12 @@
   <!-- 页码 部分 -->
   <el-row>
     <el-col :span="12" :offset="6">
-      <el-pagination  layout="prev, pager, next"
+      <el-pagination
+      background
+      layout="prev, pager, next"
       :total="1000"
       style="margin: 20px 0px;"
-      prev-text="上一页"
-      next-text="下一页">
+      >
       </el-pagination>
     </el-col>
   </el-row>
@@ -79,7 +76,17 @@
 </template>
 
 <script>
+import { Filter,Switch,Share,DeleteFilled
+ } from '@element-plus/icons-vue'
 export default {
+  setup(){
+  return {
+    Filter,Switch,Share,DeleteFilled
+   }
+  },
+  components: {
+    Filter,Switch,Share,DeleteFilled
+  },
   name: 'App',
   data() {
       const item = {
